@@ -1,5 +1,5 @@
 CREATE TABLE hotel_chain(
-    name VARCHAR(255) PRIMARY KEY NOT NUll,
+    name VARCHAR(255) PRIMARY KEY NOT NULL,
     address VARCHAR(255) NOT NULL,
     hotel_num INT NOT NULL,
     email_adrs VARCHAR (255),
