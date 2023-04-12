@@ -413,8 +413,7 @@ CREATE TABLE history (
     rstart_date VARCHAR(10),
     rend_date VARCHAR(10),
     FOREIGN KEY (customer_ID) references customers (customer_ID),
-    FOREIGN KEY (employee_ID) references employees (employee_ID),
-    FOREIGN KEY (room_num) references rooms (room_num)
+    FOREIGN KEY (employee_ID) references employees (employee_ID)
 );
 
 INSERT INTO history(check_in, rstart_date)
