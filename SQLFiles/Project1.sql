@@ -16,9 +16,8 @@ VALUES
     ('The Luxury Collection Hotels.', '8994 Alderson Ave', 8 ,'Ifilev@ivanfilev.com', '(833) 976-7077'),
     ('Westin Hotels & Resorts.', '7055 Paragon Rd', 8 ,'aaron.r.epstein@gmail.com', '(613) 263-0246');
 
-
 CREATE TABLE hotel(
-    hotel_ID SERIAL PRIMARY KEY NOT NULL,--auto generating ID
+    hotel_ID INT PRIMARY KEY NOT NULL,
     hotel_chain_name VARCHAR(255) NOT NULL,
     name VARCHAR(50) NOT NULL,
     star_category NUMERIC(1,0) NOT NULL,
@@ -37,58 +36,56 @@ SET room_amnt=5
 WHERE room_amnt=8;
 
 -- 8 hotels in each chain
-INSERT INTO hotel(hotel_chain_name,name, star_category, room_amnt, hotel_adrs, email, phone_num, manager)
+INSERT INTO hotel
 VALUES
-    ('Westin Hotels & Resorts.', 'Hotel The Pie', 4 , 6 , '160 Franklin St', 'adamn185@gmail.com', '(899) 129-0073', 'Antonios'),
-    ('Westin Hotels & Resorts.', 'Whale Cave Inn', 4 , 6 , '6 Sonora Ct', 'amnieves09@gmail.com', '(613) 863-4259', 'Shaila'),
-    ('Westin Hotels & Resorts.', 'Belmond', 4 , 5 , '3309 E Miraloma Ave, Ste 109', 'Sharon.Sawicki@dep.state.fl.us', '(613) 127-6534', 'Keonda'),
-    ('Westin Hotels & Resorts.', 'Ritz-Carlton Hotel', 4 , 5 , '160 Franklin St', 'tlallathin@drmp.com', '(613) 625-2966', 'Francene'),
-    ('Westin Hotels & Resorts.', 'The Stanley Hotel', 4 , 5 , '323 S Kingshighway St', 'sehlah@aol.com', '(833) 882-8152', 'Qasim'),
-    ('Westin Hotels & Resorts.', 'Belmond', 3 , 7 , '168 SE 16th St', 'laureanoma70@gmail.com', '(833) 154-0856', 'Montrel'),
-    ('Westin Hotels & Resorts.', 'Soft Petal Hotel', 5 , 7 , '506 S Oak Ave', 'j_sshow@bellsouth.net', '(844) 356-6901', 'Gisella'),
-    ('Westin Hotels & Resorts.', 'Hotel Joy Stick', 3 , 7 , '2808 S Normal Ave', 'brentschrader@hotmail.com', '(833) 099-0017', 'Dilan'),
+    (1, 'Westin Hotels & Resorts.', 'Hotel The Pie', 4 , 6 , '160 Franklin St', 'adamn185@gmail.com', '(899) 129-0073', 'Antonios'),
+    (2, 'Westin Hotels & Resorts.', 'Whale Cave Inn', 4 , 6 , '6 Sonora Ct', 'amnieves09@gmail.com', '(613) 863-4259', 'Shaila'),
+    (3, 'Westin Hotels & Resorts.', 'Belmond', 4 , 5 , '3309 E Miraloma Ave, Ste 109', 'Sharon.Sawicki@dep.state.fl.us', '(613) 127-6534', 'Keonda'),
+    (4, 'Westin Hotels & Resorts.', 'Ritz-Carlton Hotel', 4 , 5 , '160 Franklin St', 'tlallathin@drmp.com', '(613) 625-2966', 'Francene'),
+    (5, 'Westin Hotels & Resorts.', 'The Stanley Hotel', 4 , 5 , '323 S Kingshighway St', 'sehlah@aol.com', '(833) 882-8152', 'Qasim'),
+    (6, 'Westin Hotels & Resorts.', 'Belmond', 3 , 7 , '168 SE 16th St', 'laureanoma70@gmail.com', '(833) 154-0856', 'Montrel'),
+    (7, 'Westin Hotels & Resorts.', 'Soft Petal Hotel', 5 , 7 , '506 S Oak Ave', 'j_sshow@bellsouth.net', '(844) 356-6901', 'Gisella'),
+    (8, 'Westin Hotels & Resorts.', 'Hotel Joy Stick', 3 , 7 , '2808 S Normal Ave', 'brentschrader@hotmail.com', '(833) 099-0017', 'Dilan'),
 
-    ('The Luxury Collection Hotels.', 'Belmond', 5 , 7 , '233 S Loma Linda Dr', 'driveros1012@gmail.com', '(613) 367-5023', 'Malini'),
-    ('The Luxury Collection Hotels.', 'W Hotel', 3 , 7 , '6 Sonora Ct', 'mthoele@brooksair.com', '(613) 034-9384', 'Bianka'),
-    ('The Luxury Collection Hotels.', 'Antlers Hilton Hotel', 4 , 5 , '1307 W Lafayette St', 'jamiepolidora@gmail.com', '(613) 246-3921', 'Lauri'),
-    ('The Luxury Collection Hotels.', 'Hotel Jolly', 5 , 5 , '4601 Sloan St', 'light.mr@gmail.com', '(613) 760-8234', 'Adreana'),
-    ('The Luxury Collection Hotels.', 'Continental Hotel and Casino', 5 , 6 , '5391 Peru St, Apt 4', 'brbradley64@gmail.com', '(613) 379-5155', 'Joscelyn'),
-    ('The Luxury Collection Hotels.', 'Soft Petal Hotel', 3 , 6 , '1434 W Argyle St', 'allen.vinson@hdrinc.com', '(613) 763-1135', 'Bronson'),
-    ('The Luxury Collection Hotels.', 'Moss View Hotel', 3 , 5 , '124 Maple Ave', 'zednanrefe@gmail.com', '(613) 347-3283', 'Danuel'),
-    ('The Luxury Collection Hotels.', 'Gotham Hotel', 3 , 5 , '1307 W Lafayette St', 'kgorak@rwa.com', '(613) 091-9879', 'Ivorie'),
-
-
-    ('Sheraton Hotels & Resorts.', 'Farmerâ€™s Daughter Hotel', 5 , 7 , '1549 Sandpiper St, Apt 55', 'larry.anderson@hdrinc.com', '(833) 154-0856', 'Breann'),
-    ('Sheraton Hotels & Resorts.', 'Country Charm Hotel', 5 , 6 , '25417 E Lincoln Dr', 'jcalhoun@vibengineering.com', '(613) 514-0403', 'Dannon'),
-    ('Sheraton Hotels & Resorts.', 'W Hotel', 3 , 6 , '168 SE 16th St', 'gouldjh@bellsouth.net', '(822) 741-9257', 'Valissa'),
-    ('Sheraton Hotels & Resorts.', 'Regency Hotel', 3 , 7 , '14710 Fourth St NE', 'rowan@fastmail.net', '(613) 127-6534', 'Nyshia'),
-    ('Sheraton Hotels & Resorts.', 'Hotel Vitality', 4 , 6 , '8994 Alderson Ave', 'john_w_shaffer@fpl.com', '(613) 710-7774', 'Haden'),
-    ('Sheraton Hotels & Resorts.', 'Antlers Hilton Hotel', 4 , 5 , '233 S Loma Linda Dr', 'tmmlclark@tds.net', '(811) 166-7456', 'Tashina'),
-    ('Sheraton Hotels & Resorts.', 'Hotel Bond', 5 , 5 , '40020 Milkwood Ln', 'chris.brockmeier@stantec.com', '(855) 297-5571', 'Derica'),
-    ('Sheraton Hotels & Resorts.', 'Whale Cave Inn', 4 , 6 , '131 S Alpine St', 'rsbrown@batelnet.bs', '(613) 710-7774', 'Tanera'),
-
-    ('St. Regis Hotels & Resorts.', 'Belmond', 3 , 6 , '1208 E Main St', 'schererjh@lycos.com', '(613) 625-2966', 'Shenae'),
-    ('St. Regis Hotels & Resorts.', 'Farmerâ€™s Daughter Hotel', 5 , 5 , '5391 Peru St, Apt 4', 'wwwtotten@gmail.com', '(899) 347-3283', 'Vanessamarie'),
-    ('St. Regis Hotels & Resorts.', 'Bedrock N Roll', 5 , 5 , '294 Clarks Ferry Rd', 'pmodia@bellsouth.net', '(613) 166-7456', 'Tangie'),
-    ('St. Regis Hotels & Resorts.', 'Sandy Bloom', 5 , 5 , '1354 Hancock St', 'rmcdaniel1975@hotmail.com', '(811) 500-6744', 'Ruperto'),
-    ('St. Regis Hotels & Resorts.', 'Palace Hotel', 5 , 7 , '73 Main St', 'JKLUCYSHYN@GMAIL.COM', '(613) 976-7077', 'Angelito'),
-    ('St. Regis Hotels & Resorts.', 'Hotel Jolly', 3 , 6 , '1405 Wilson Dr', 'dbogue@aluma.com', '(899) 246-3921', 'Golden'),
-    ('St. Regis Hotels & Resorts.', 'Cosmopolitan of Las Vegas', 4 , 5 , '57 Dunlap St', 'jiashunhuang@yahoo.com', '(811) 796-7070', 'Reece'),
-    ('St. Regis Hotels & Resorts.', 'Cable Car Hotel', 5 , 6 , '8994 Alderson Ave', 'jkjk1970@bellsouth.net', '(855) 951-3365', 'Michae'),
+    (9, 'The Luxury Collection Hotels.', 'Belmond', 5 , 7 , '233 S Loma Linda Dr', 'driveros1012@gmail.com', '(613) 367-5023', 'Malini'),
+    (10, 'The Luxury Collection Hotels.', 'W Hotel', 3 , 7 , '6 Sonora Ct', 'mthoele@brooksair.com', '(613) 034-9384', 'Bianka'),
+    (11, 'The Luxury Collection Hotels.', 'Antlers Hilton Hotel', 4 , 5 , '1307 W Lafayette St', 'jamiepolidora@gmail.com', '(613) 246-3921', 'Lauri'),
+    (12, 'The Luxury Collection Hotels.', 'Hotel Jolly', 5 , 5 , '4601 Sloan St', 'light.mr@gmail.com', '(613) 760-8234', 'Adreana'),
+    (13, 'The Luxury Collection Hotels.', 'Continental Hotel and Casino', 5 , 6 , '5391 Peru St, Apt 4', 'brbradley64@gmail.com', '(613) 379-5155', 'Joscelyn'),
+    (14, 'The Luxury Collection Hotels.', 'Soft Petal Hotel', 3 , 6 , '1434 W Argyle St', 'allen.vinson@hdrinc.com', '(613) 763-1135', 'Bronson'),
+    (15, 'The Luxury Collection Hotels.', 'Moss View Hotel', 3 , 5 , '124 Maple Ave', 'zednanrefe@gmail.com', '(613) 347-3283', 'Danuel'),
+    (16, 'The Luxury Collection Hotels.', 'Gotham Hotel', 3 , 5 , '1307 W Lafayette St', 'kgorak@rwa.com', '(613) 091-9879', 'Ivorie'),
 
 
-    ('Montage Hotels & Resorts.', 'Always Welcome', 3 , 5 , '5531 Cranbrook Way', 'mikealgaines@gmail.com', '(613) 710-7774', 'Zakaria'),
-    ('Montage Hotels & Resorts.', 'Newhouse Hotel', 5 , 7 , '12324 S Benck Dr, Apt 104', 'mcdonnellwj@embarqmail.com', '(613) 055-1161', 'Chan'),
-    ('Montage Hotels & Resorts.', 'El Rancho Casino', 5 , 5 , '3549 17th St', 'deedra.allen@mosaicco.com', '(613) 932-4904', 'Leeander'),
-    ('Montage Hotels & Resorts.', 'Always Welcome', 3 , 7 , '9664 Hilltop Rd', 'JMEYER@MANDKENGINEERING.COM', '(822) 315-1994', 'Josette'),
-    ('Montage Hotels & Resorts.', 'Fairview Hotel', 4 , 6 , '949 Clock Tower Dr', 'usfrasmith@gmail.com', '(899) 129-0073', 'Emmanuell'),
-    ('Montage Hotels & Resorts.', 'The Welcome Mat', 4 , 6 , '172 Shaw St   12587 Aster Ct', 'dixonwe@yahoo.com', '(833) 099-0017', 'Megen'),
-    ('Montage Hotels & Resorts.', 'Hotel Joy Stick', 3 , 6 , '3550 Cedar Creek Dr', 'rebeccarashkin@gmail.com', '(844) 763-1135', 'Asa'),
-    ('Montage Hotels & Resorts.', 'Farmerâ€™s Daughter Hotel', 3 , 6 , '2683 Griffin Ave', 'joelmiller22@gmail.com', '(613) 091-9879', 'Megon');
+    (17, 'Sheraton Hotels & Resorts.', 'Farmerâ€™s Daughter Hotel', 5 , 7 , '1549 Sandpiper St, Apt 55', 'larry.anderson@hdrinc.com', '(833) 154-0856', 'Breann'),
+    (18, 'Sheraton Hotels & Resorts.', 'Country Charm Hotel', 5 , 6 , '25417 E Lincoln Dr', 'jcalhoun@vibengineering.com', '(613) 514-0403', 'Dannon'),
+    (19, 'Sheraton Hotels & Resorts.', 'W Hotel', 3 , 6 , '168 SE 16th St', 'gouldjh@bellsouth.net', '(822) 741-9257', 'Valissa'),
+    (20, 'Sheraton Hotels & Resorts.', 'Regency Hotel', 3 , 7 , '14710 Fourth St NE', 'rowan@fastmail.net', '(613) 127-6534', 'Nyshia'),
+    (21, 'Sheraton Hotels & Resorts.', 'Hotel Vitality', 4 , 6 , '8994 Alderson Ave', 'john_w_shaffer@fpl.com', '(613) 710-7774', 'Haden'),
+    (22, 'Sheraton Hotels & Resorts.', 'Antlers Hilton Hotel', 4 , 5 , '233 S Loma Linda Dr', 'tmmlclark@tds.net', '(811) 166-7456', 'Tashina'),
+    (23, 'Sheraton Hotels & Resorts.', 'Hotel Bond', 5 , 5 , '40020 Milkwood Ln', 'chris.brockmeier@stantec.com', '(855) 297-5571', 'Derica'),
+    (24, 'Sheraton Hotels & Resorts.', 'Whale Cave Inn', 4 , 6 , '131 S Alpine St', 'rsbrown@batelnet.bs', '(613) 710-7774', 'Tanera'),
+
+    (25, 'St. Regis Hotels & Resorts.', 'Belmond', 3 , 6 , '1208 E Main St', 'schererjh@lycos.com', '(613) 625-2966', 'Shenae'),
+    (26, 'St. Regis Hotels & Resorts.', 'Farmerâ€™s Daughter Hotel', 5 , 5 , '5391 Peru St, Apt 4', 'wwwtotten@gmail.com', '(899) 347-3283', 'Vanessamarie'),
+    (27, 'St. Regis Hotels & Resorts.', 'Bedrock N Roll', 5 , 5 , '294 Clarks Ferry Rd', 'pmodia@bellsouth.net', '(613) 166-7456', 'Tangie'),
+    (28, 'St. Regis Hotels & Resorts.', 'Sandy Bloom', 5 , 5 , '1354 Hancock St', 'rmcdaniel1975@hotmail.com', '(811) 500-6744', 'Ruperto'),
+    (29, 'St. Regis Hotels & Resorts.', 'Palace Hotel', 5 , 7 , '73 Main St', 'JKLUCYSHYN@GMAIL.COM', '(613) 976-7077', 'Angelito'),
+    (30, 'St. Regis Hotels & Resorts.', 'Hotel Jolly', 3 , 6 , '1405 Wilson Dr', 'dbogue@aluma.com', '(899) 246-3921', 'Golden'),
+    (31, 'St. Regis Hotels & Resorts.', 'Cosmopolitan of Las Vegas', 4 , 5 , '57 Dunlap St', 'jiashunhuang@yahoo.com', '(811) 796-7070', 'Reece'),
+    (32, 'St. Regis Hotels & Resorts.', 'Cable Car Hotel', 5 , 6 , '8994 Alderson Ave', 'jkjk1970@bellsouth.net', '(855) 951-3365', 'Michae'),
 
 
-
-CREATE TABLE rooms(
+    (33, 'Montage Hotels & Resorts.', 'Always Welcome', 3 , 5 , '5531 Cranbrook Way', 'mikealgaines@gmail.com', '(613) 710-7774', 'Zakaria'),
+    (34, 'Montage Hotels & Resorts.', 'Newhouse Hotel', 5 , 7 , '12324 S Benck Dr, Apt 104', 'mcdonnellwj@embarqmail.com', '(613) 055-1161', 'Chan'),
+    (35, 'Montage Hotels & Resorts.', 'El Rancho Casino', 5 , 5 , '3549 17th St', 'deedra.allen@mosaicco.com', '(613) 932-4904', 'Leeander'),
+    (36, 'Montage Hotels & Resorts.', 'Always Welcome', 3 , 7 , '9664 Hilltop Rd', 'JMEYER@MANDKENGINEERING.COM', '(822) 315-1994', 'Josette'),
+    (37, 'Montage Hotels & Resorts.', 'Fairview Hotel', 4 , 6 , '949 Clock Tower Dr', 'usfrasmith@gmail.com', '(899) 129-0073', 'Emmanuell'),
+    (38, 'Montage Hotels & Resorts.', 'The Welcome Mat', 4 , 6 , '172 Shaw St   12587 Aster Ct', 'dixonwe@yahoo.com', '(833) 099-0017', 'Megen'),
+    (39, 'Montage Hotels & Resorts.', 'Hotel Joy Stick', 3 , 6 , '3550 Cedar Creek Dr', 'rebeccarashkin@gmail.com', '(844) 763-1135', 'Asa'),
+    (40, 'Montage Hotels & Resorts.', 'Farmerâ€™s Daughter Hotel', 3 , 6 , '2683 Griffin Ave', 'joelmiller22@gmail.com', '(613) 091-9879', 'Megon');
+ 
+ CREATE TABLE rooms(
     room_num INT NOT NULL,
     hotel_ID INT NOT NULL,
     price NUMERIC(10,3) NOT NULL,
@@ -97,13 +94,12 @@ CREATE TABLE rooms(
     view_type VARCHAR (255),
     ext_poss VARCHAR(255) NOT NULL,
     damages VARCHAR (255),
-    status VARCHAR(20) NOT NULL,
-    FOREIGN KEY (hotel_ID) references hotel (hotel_ID)
-	ON DELETE CASCADE
-	ON UPDATE CASCADE
+    r_status VARCHAR(20) NOT NULL,
+    FOREIGN KEY (hotel_ID) references hotel(hotel_ID)
+	 ON DELETE CASCADE
 );
 
-INSERT INTO rooms(room_num,hotel_ID, price, amenities, room_cpsty, view_type, ext_poss, damages, status)
+INSERT INTO rooms
 VALUES
     (1, 1 , 1210 ,'TV, air condition, wifi, Lounge, Non smoking rooms', 1 ,'sea view', 'one extra bed, Laundry', 'Missing linens', 'Occupied'),
     (2, 1 , 4335 ,'TV, air condition, wifi, 24-hour front desk, Parking free', 2 ,'sea view', 'Spa service', 'Cracked mirror', 'Available'),
@@ -353,9 +349,6 @@ VALUES
     (4, 40 , 4416 ,'TV, air condition, fridge, wifi, Fitness center', 5 ,'mountain view', 'TV, Laundry service', 'Water damage leak', 'Occupied'),
     (5, 40 , 4263 ,'TV, air condition, wifi, 24-hour front desk, Parking free', 1 ,'sea view', 'Handicap accessibility', 'Stained or damaged carpets', 'Available');
 
-
-DROP TABLE customers;
-
 CREATE TABLE customers (
     customer_ID SERIAL PRIMARY KEY NOT NULL,
     first_name VARCHAR(20) NOT NULL,
@@ -364,6 +357,8 @@ CREATE TABLE customers (
     sin INT NOT NULL,
     rgstr_date VARCHAR(20) NOT NULL
 );
+
+TRUNCATE TABLE customers;
 
 INSERT INTO customers(first_name, last_name, address, sin, rgstr_date)
 VALUES
@@ -389,7 +384,6 @@ CREATE TABLE employees (
     role VARCHAR(50) NOT NULL
 );
 
-
 INSERT INTO employees(first_name,last_name, address, sin, role)
 VALUES
 ('Britnei', 'PREVOT', '1023 Cherrywood Cir', 4112079 ,'Executive conference manager'),
@@ -412,8 +406,10 @@ CREATE TABLE history (
     booking_date VARCHAR(10),
     rstart_date VARCHAR(10),
     rend_date VARCHAR(10),
-    FOREIGN KEY (customer_ID) references customers (customer_ID),
+    FOREIGN KEY (customer_ID) references customers (customer_ID)
+	ON DELETE NO ACTION,
     FOREIGN KEY (employee_ID) references employees (employee_ID)
+	ON DELETE SET NULL
 );
 
 INSERT INTO history(check_in, rstart_date)
@@ -429,10 +425,10 @@ VALUES
     ( True ,'21-05-2082'),
     ( False ,'16-05-1987');
  
- /* Indexes: */
+/* Indexes: */
 /* This index can be used by customers (users) to efficiently find all rooms currently available */
 /* Also, employees can use this index to find all rooms currently booked/occupied. */
-create index room_status on rooms(status);
+create index room_status on rooms(r_status);
 
 /* This index is intended for efficiently locating the information of a specific customer. */
 /* Employees can use it to pull up the profile of a customer */
@@ -453,8 +449,8 @@ create index star_index on hotel(star_category);
 /* 1) Number of rooms available per area */
 create view rooms_avail as
 		select count (*)
-		from rooms
-		where status = ‘Available’ 
+		from rooms, hotel
+		where r_status = 'Available'
 group by hotel_adrs in (select hotel_adrs
 			from hotel);     
 /* group by area could be more defined…*/
@@ -464,32 +460,27 @@ create view capacity as
 		select room_cpsty
 		from rooms
 		group by hotel_ID; 
-		
+
 /* Queries (Part 8) */
 /* See available rooms with various criteria */
 select *
 	from rooms
-	where status = 'Available';
+	where r_status = 'Available';
 
 select *
 	from rooms
-	where status = 'Available'
+	where r_status = 'Available'
 	and hotel_ID = 1; /* can alter hotel_ID to any room attribute (ie amenities, capacity, view_type) */
-
-/* select all from room where the status is available and it has a TV, excluding any with a mountain view */
-(select * from rooms where status = 'Available' and amenities = '%TV%')
-except
-(select * from rooms where view_type = 'mountain view')
 
 select * 
 	from rooms
-	where status = 'Available'
+	where r_status = 'Available'
 	and price between 1000 and 2000; /* search for room with a min and max price parameter */
 
 /* search by hotel chain */
 select *
 	from rooms
-	where status = 'Available'
+	where r_status = 'Available'
 	and hotel_ID in (select hotel_ID
 			 from hotel
 			 where hotel_chain_name = 'Montage Hotels & Resorts.');
@@ -497,7 +488,7 @@ select *
 /* search by hotel category */
 select *
 	from rooms
-	where status = 'Available'
+	where r_status = 'Available'
 	and hotel_ID in (select hotel_ID
 			 from hotel
 			 where star_category between 3 and 5);
@@ -505,11 +496,11 @@ select *
 /* search by hotel total number of rooms */
 select *
 	from rooms
-	where status = 'Available'
+	where r_status = 'Available'
 	and hotel_ID in (select hotel_ID
 			 from hotel
 			 where room_amnt between 10 and 100);
-			 
+
 /* With implementation of DELETE CASCADE on hotel and rooms, if we delete from relation hotel_chain: */
 DELETE FROM hotel_chain
 WHERE name = 'Westin Hotels & Resorts.';
@@ -536,26 +527,26 @@ SET name = 'Paradise Living.'
 WHERE name = 'The Luxury Collection Hotels.';
 /* The UPDATE CASCADE integrity constraint on hotel causes the tuples to update with the new hotel_chain_name */
 SELECT hotel_chain_name
-FROM rooms
+FROM hotel;
 /* Now the above query no longer contains instances of 'The Luxury Collection Hotels.' - they have been replaced with 'Paradise Living.' */
 
-/* Say a user has to update the hotel_ID to a new four digit ID */
-UPDATE hotel
-SET hotel_ID = '2456'
-WHERE hotel_ID = '1';
-/* The UPDATE CASCADE integrity constraint on rooms causes the tuples to update with the new hotel_ID */
-SELECT hotel_ID
-FROM rooms
-/* Now the above query no longer contains instances of '1' - they have been replaced with '2456' */
+/* Say an employee leaves the hotel/hotel chain and is deleted from the system */
+DELETE FROM employees
+WHERE last_name = 'PERVOT';
+/* The SET TO NULL constraint ensures that the history of the room is kept
+   even when the employee is removed */
+SELECT employee_ID
+FROM history;
+/* Now the above query no longer contains the ID of the deleted employee, but keeps the rest */
 
 /* Triggers */
 
 /* When a new room is add to a hotel, damages are automatically set to 'none'. and the status is set to 'available' */
 CREATE TRIGGER new_room
-after INSERT
+before INSERT
 ON rooms
 FOR EACH ROW
-SET new.damages = 'none' and new.status = 'available'; /* keyword new refers to rows being affected */
+SET new.damages = 'none' and new.r_status = 'available'; /* keyword new refers to rows being affected */
 
 /* In the event a user attempts to delete a room directly room the room relation (without the deletion of the corresponding hotel
  the trigger halts the actions and insteads alters the status (in case the room is merely out of commision and should be hidden from queries) */
@@ -564,8 +555,6 @@ SET new.damages = 'none' and new.status = 'available'; /* keyword new refers to 
  INSTEAD OF DELETE
  AS
  UPDATE rooms
- SET status = 'Unavailable'
- WHERE status = old.status;
- 
-
+ SET r_status = 'Unavailable'
+ WHERE r_status = old.status;
 
