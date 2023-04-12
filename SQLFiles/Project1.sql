@@ -28,6 +28,8 @@ CREATE TABLE hotel(
     phone_num VARCHAR (20),
     manager VARCHAR(25) NOT NULL,
     FOREIGN KEY (hotel_chain_name) REFERENCES hotel_chain(name)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
 );
 
 UPDATE hotel
@@ -97,6 +99,8 @@ CREATE TABLE rooms(
     damages VARCHAR (255),
     status VARCHAR(20) NOT NULL,
     FOREIGN KEY (hotel_ID) references hotel (hotel_ID)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
 );
 
 INSERT INTO rooms(room_num,hotel_ID, price, amenities, room_cpsty, view_type, ext_poss, damages, status)
@@ -407,6 +411,7 @@ CREATE TABLE history (
     check_in BOOLEAN,
     booking_date VARCHAR(10),
     rstart_date VARCHAR(10),
+    rend_date VARCHAR(10),
     FOREIGN KEY (customer_ID) references customers (customer_ID),
     FOREIGN KEY (employee_ID) references employees (employee_ID),
     FOREIGN KEY (room_num) references rooms (room_num)
@@ -450,7 +455,7 @@ create index star_index on hotel(star_category);
 create view rooms_avail as
 		select count (*)
 		from rooms
-		where status = ‘available’ 
+		where status = ‘Available’ 
 group by hotel_adrs in (select hotel_adrs
 			from hotel);     
 /* group by area could be more defined…*/
@@ -460,3 +465,48 @@ create view capacity as
 		select room_cpsty
 		from rooms
 		group by hotel_ID; 
+		
+/* Queries (Part 8) */
+/* See available rooms with various criteria */
+select *
+	from rooms
+	where status = 'Available';
+
+select *
+	from rooms
+	where status = 'Available'
+	and hotel_ID = 1; /* can alter hotel_ID to any room attribute (ie amenities, capacity, view_type) */
+
+/* select all from room where the status is available and it has a TV, excluding any with a mountain view */
+(select * from rooms where status = 'Available' and amenities = '%TV%')
+except
+(select * from rooms where view_type = 'mountain view')
+
+select * 
+	from rooms
+	where status = 'Available'
+	and price between 1000 and 2000; /* search for room with a min and max price parameter */
+
+/* search by hotel chain */
+select *
+	from rooms
+	where status = 'Available'
+	and hotel_ID in (select hotel_ID
+			 from hotel
+			 where hotel_chain_name = 'Montage Hotels & Resorts.');
+
+/* search by hotel category */
+select *
+	from rooms
+	where status = 'Available'
+	and hotel_ID in (select hotel_ID
+			 from hotel
+			 where star_category between 3 and 5);
+
+/* search by hotel total number of rooms */
+select *
+	from rooms
+	where status = 'Available'
+	and hotel_ID in (select hotel_ID
+			 from hotel
+			 where room_amnt between 10 and 100);
