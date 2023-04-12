@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import "../App.css";
+import Main from "./pages/Main";
+
+<Routes>
+  <Route path="home" element={<Main />} />
+</Routes>
 
 export default function Registration() {
   const [usernameReg, setUsernameReg] = useState("");
@@ -29,6 +34,7 @@ export default function Registration() {
     }).then((response) => {
       if (response.data.message) {
         setLoginStatus(response.data.message);
+        window.open("home");
       } else {
         setLoginStatus(response.data[0].username);
       }
