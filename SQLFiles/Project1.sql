@@ -510,3 +510,63 @@ select *
 	and hotel_ID in (select hotel_ID
 			 from hotel
 			 where room_amnt between 10 and 100);
+			 
+/* With implementation of DELETE CASCADE on hotel and rooms, if we delete from relation hotel_chain: */
+DELETE FROM hotel_chain
+WHERE name = 'Westin Hotels & Resorts.';
+/* all tuples in hotel with the corresponding foreign key hotel_chain_name will be deleted. */
+SELECT *
+FROM hotel;
+/* Now the above query shows information on only 4 hotel chains */
+/* Also, because rooms is dependent on hotel, all tuples in rooms with corresponding foreign key hotel_ID are deleted. */
+SELECT *
+FROM rooms;
+/* Now the above query shows information only for the hotels in the remaining 4 chains. */
+
+/* Alternatively, say a hotel chain shuts down one of its hotels: */
+DELETE FROM hotel
+WHERE hotel_ID = '1';
+/* With the delete cascade integrity constraint, all rooms tuples with hotel_ID '1' are also deleted */
+SELECT *
+FROM rooms;
+/* Above query now shows all rooms from all hotels except hotel with hotel_ID = '1' */
+
+/* Say a hotel chain decides to rebrand and change their name (the primary key) */
+UPDATE hotel_chain
+SET name = 'Paradise Living.'
+WHERE name = 'The Luxury Collection Hotels.';
+/* The UPDATE CASCADE integrity constraint on hotel causes the tuples to update with the new hotel_chain_name */
+SELECT hotel_chain_name
+FROM rooms
+/* Now the above query no longer contains instances of 'The Luxury Collection Hotels.' - they have been replaced with 'Paradise Living.' */
+
+/* Say a user has to update the hotel_ID to a new four digit ID */
+UPDATE hotel
+SET hotel_ID = '2456'
+WHERE hotel_ID = '1';
+/* The UPDATE CASCADE integrity constraint on rooms causes the tuples to update with the new hotel_ID */
+SELECT hotel_ID
+FROM rooms
+/* Now the above query no longer contains instances of '1' - they have been replaced with '2456' */
+
+/* Triggers */
+
+/* When a new room is add to a hotel, damages are automatically set to 'none'. and the status is set to 'available' */
+CREATE TRIGGER new_room
+after INSERT
+ON rooms
+FOR EACH ROW
+SET new.damages = 'none' and new.status = 'available'; /* keyword new refers to rows being affected */
+
+/* In the event a user attempts to delete a room directly room the room relation (without the deletion of the corresponding hotel
+ the trigger halts the actions and insteads alters the status (in case the room is merely out of commision and should be hidden from queries) */
+ CREATE TRIGGER rooms_insteadOfDelete
+ ON rooms
+ INSTEAD OF DELETE
+ AS
+ UPDATE rooms
+ SET status = 'Unavailable'
+ WHERE status = old.status;
+ 
+
+
