@@ -402,28 +402,28 @@ CREATE TABLE history (
     customer_ID SERIAL NOT NULL ,
     employee_ID SERIAL,
     room_num INT NOT NULL,
+    hotel_id INT NOT NULL,
     check_in BOOLEAN,
-    booking_date VARCHAR(10),
     rstart_date VARCHAR(10),
     rend_date VARCHAR(10),
-    FOREIGN KEY (customer_ID) references customers (customer_ID)
-	ON DELETE NO ACTION,
-    FOREIGN KEY (employee_ID) references employees (employee_ID)
-	ON DELETE SET NULL
+    FOREIGN KEY (customer_ID) references customers (customer_ID),
+    FOREIGN KEY (employee_ID) references employees (employee_ID),
+    FOREIGN KEY (hotel_id,room_num) references rooms(hotel_id,room_num)
 );
 
-INSERT INTO history(check_in, rstart_date)
+INSERT INTO history(room_num,hotel_id,check_in, rstart_date, rend_date)
 VALUES
-    ( False ,'12-01-1984'),
-    ( False ,'15-01-2055'),
-    ( False ,'20-03-1935'),
-    ( False ,'29-11-2060'),
-    ( True ,'04-02-1966'),
-    ( True ,'31-03-1906'),
-    ( True ,'15-08-2065'),
-    ( False ,'28-03-1991'),
-    ( True ,'21-05-2082'),
-    ( False ,'16-05-1987');
+    (1,16, False ,'12-01-1984', '13-01-1984'),
+    (3, 38, False ,'15-01-2055','28-01-2055'),
+    (5,5, False ,'20-03-1935','24-03-1935'),
+    (2,13,False ,'29-11-2060','30-11-2060'),
+    (1,5,True ,'04-02-1966','10-02-1966'),
+    (3,40, True ,'31-03-1906','09-04-1906'),
+    (4,25, True ,'15-08-2065','23-08-2065'),
+    (5,20, False ,'28-03-1991','29-03-1991'),
+    (4,7, True ,'21-05-2082','24-05-2082'),
+    (2,19, False ,'16-05-1987','26-05-1987');
+
  
 /* Indexes: */
 /* This index can be used by customers (users) to efficiently find all rooms currently available */
